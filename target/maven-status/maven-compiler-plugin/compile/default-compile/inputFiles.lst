@@ -1,1 +1,6 @@
 /home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/Bibliotheque/BibliothequeApplication.java
+/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/Bibliotheque/config/MvcConfig.java
+/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/controller/BibliothecaireController.java
+/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/entity/Bibliothecaire.java
+/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/repository/BibliothecaireRepository.java
+/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/service/BibliothecaireService.java
