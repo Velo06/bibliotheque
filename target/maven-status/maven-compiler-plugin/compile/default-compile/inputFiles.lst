@@ -1,6 +1,8 @@
-/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/Bibliotheque/BibliothequeApplication.java
-/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/Bibliotheque/config/MvcConfig.java
-/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/controller/BibliothecaireController.java
-/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/entity/Bibliothecaire.java
-/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/repository/BibliothecaireRepository.java
-/home/rasm/Documents/GitHub/gestion_bibliotheque/src/main/java/com/exemple/service/BibliothecaireService.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/DemoApplication.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/ServletInitializer.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/config/LoginFilter.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/controller/BibliothecaireController.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/controller/HomeController.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/entity/Bibliothecaire.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/repository/BibliothecaireRepository.java
+/home/rasm/coursITU/Web Dynamique/demo/src/main/java/com/example/demo/service/BibliothecaireService.java

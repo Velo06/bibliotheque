@@ -1,1 +1,8 @@
-com/exemple/Bibliotheque/BibliothequeApplication.class
+com/example/demo/config/LoginFilter.class
+com/example/demo/DemoApplication.class
+com/example/demo/controller/BibliothecaireController.class
+com/example/demo/controller/HomeController.class
+com/example/demo/service/BibliothecaireService.class
+com/example/demo/entity/Bibliothecaire.class
+com/example/demo/repository/BibliothecaireRepository.class
+com/example/demo/ServletInitializer.class
