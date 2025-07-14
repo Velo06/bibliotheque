@@ -9,22 +9,14 @@ import com.example.demo.repository.BibliothecaireRepository;
 public class BibliothecaireService {
     
     @Autowired
-    private BibliothecaireRepository bibliothecaireRepository;
+    private BibliothecaireRepository biblioRepository;
     
-    public Bibliothecaire authentifier(String pseudo, String motDePasse) {
-        System.out.println("Tentative de connexion avec pseudo: " + pseudo);
-        Bibliothecaire bibliothecaire = bibliothecaireRepository.findByPseudo(pseudo);
-        
-        if (bibliothecaire != null) {
-            System.out.println("Utilisateur trouvé. Mot de passe DB: " + bibliothecaire.getMot_de_passe() 
-                + " | Mot de passe saisi: " + motDePasse);
-        } else {
-            System.out.println("Aucun utilisateur trouvé avec ce pseudo");
-        }
-        
-        if (bibliothecaire != null && bibliothecaire.getMot_de_passe().equals(motDePasse)) {
-            return bibliothecaire;
-        }
-        return null;
+    public Bibliothecaire saveBibliothecaire(Bibliothecaire personne) {
+        return biblioRepository.save(personne);
+    }
+
+    public boolean authenticate(String nom, String rawPassword) {
+        boolean exist = biblioRepository.checkLogin(nom, rawPassword);
+        return exist;
     }
 }

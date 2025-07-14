@@ -2,65 +2,48 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import com.example.demo.entity.Bibliothecaire;
-import com.example.demo.service.BibliothecaireService;
-
+import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.example.demo.service.BibliothecaireService;
+import com.example.demo.entity.Bibliothecaire;
 
 @Controller
+@RequestMapping("/bibliothecaire")
 public class BibliothecaireController {
-    
     @Autowired
-    private BibliothecaireService bibliothecaireService;
-    
-    @GetMapping("/login")
-    public String showLoginForm() {
-        return "bibliothecaire/login";
+    private BibliothecaireService biblioService;
+
+    @Autowired
+    public BibliothecaireController(
+        BibliothecaireService biblioService      
+    ) {
+        this.biblioService = biblioService;       
     }
 
-    @GetMapping("/bibliothecaire/dashboard")
-    public String showDashboard(HttpSession session, Model model) {
-        // Vérification de la session
-        Bibliothecaire bibliothecaire = (Bibliothecaire) session.getAttribute("bibliothecaire");
-        
-        if (bibliothecaire == null) {
-            return "redirect:/login";
-        }
-        
-        // Ajoutez des données au modèle si nécessaire
-        model.addAttribute("bibliothecaire", bibliothecaire);
-        
-        return "bibliothecaire/dashboard";
+    @GetMapping("/login")
+    public String AdherentForm() {
+        return "login-biblio";
     }
-    
-    @PostMapping("/login")
-    public String login(@RequestParam String pseudo, 
-                    @RequestParam String motDePasse,
-                    HttpSession session,
-                    Model model) {
+
+    @PostMapping("/checkLogin") 
+    public String checkLogin(
+        @RequestParam("nom") String nom,
+        @RequestParam("mdp") String mdp,
+        HttpSession session,
+        RedirectAttributes redirectAttributes) {
         
-        System.out.println("Tentative de connexion - Pseudo: " + pseudo + ", MDP: " + motDePasse);
+        boolean check = biblioService.authenticate(nom, mdp);
         
-        Bibliothecaire bibliothecaire = bibliothecaireService.authentifier(pseudo, motDePasse);
-        
-        if (bibliothecaire != null) {
-            System.out.println("Connexion réussie pour: " + bibliothecaire.getPseudo());
-            session.setAttribute("bibliothecaire", bibliothecaire);
-            return "redirect:/bibliothecaire/dashboard";
+        if(check) {
+            // Stocker l'utilisateur en session
+            session.setAttribute("currentUser", nom);
+            return "redirect:/pret/formPreter";
         } else {
-            System.out.println("Échec de connexion");
-            model.addAttribute("error", "Pseudo ou mot de passe incorrect");
-            return "bibliothecaire/login";
+            // Ajouter un message d'erreur
+            redirectAttributes.addFlashAttribute("error", "Nom ou mot de passe incorrect");
+            return "redirect:/bibliothecaire/login";
         }
-}
-    
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/login";
     }
 }

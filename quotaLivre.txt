@@ -1,0 +1,1 @@
+quotaLivre atteint si count(pret where idAdherent=? and idPret=2 and dateEmprunt=now()) > quotaLivre de l'adherent
