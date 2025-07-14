@@ -15,4 +15,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
     // checkLogin
     @Query("SELECT COUNT(a) > 0 FROM Bibliothecaire a WHERE a.nom = :nom AND a.mdp = :mdp")
     boolean checkLogin(@Param("nom") String nom, @Param("mdp") String mdp);
+
+    @Query("SELECT COUNT(r) FROM Reservation r WHERE r.adherent.id = :idAdherent AND r.etat.etat = 'en attente'")
+    int countReservationsEnAttente(@Param("idAdherent") int idAdherent);
 }

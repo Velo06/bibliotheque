@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.demo.service.ReservationService;
+import com.example.demo.service.AdherentService;
 import com.example.demo.entity.Reservation;
 import com.example.demo.entity.Adherent;
 import com.example.demo.entity.Etat;
@@ -21,10 +22,12 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/reservation")
 public class ReservationController {
     private final ReservationService resaService;
+    private final AdherentService adherentService;
 
     @Autowired
-    public ReservationController(ReservationService resaService) {
+    public ReservationController(ReservationService resaService, AdherentService adherentService) {
         this.resaService = resaService;
+        this.adherentService = adherentService;
     }
 
     @GetMapping("formReserve")
@@ -46,13 +49,27 @@ public class ReservationController {
         Etat e = new Etat();
         e.setId(3);
         LocalDate ld = LocalDate.now();
-        if(date.isBefore(ld) || date.isEqual(ld)) {
-            redirectAttributes.addFlashAttribute("message", "La date a reserver ne doit pas etre la date d'aujourd'hui ou anterieure a celle d'aujourd'hui.");
+        Long idAdh = Long.valueOf(adh);
+        boolean abonne = adherentService.estAbonne(idAdh);
+        int quota = adherentService.getQuotaReservation(adh);
+        int countQuota = resaService.countResaAdherent(adh);
+        if(abonne == true) {
+            if(quota < countQuota) {
+                if(date.isBefore(ld) || date.isEqual(ld)) {
+                    redirectAttributes.addFlashAttribute("message", "La date a reserver ne doit pas etre la date d'aujourd'hui ou anterieure a celle d'aujourd'hui.");
+                    return "redirect:/reservation/formReserve?idAdherent=" + adh + "&idLivre=" + livre;
+                }
+                Reservation r = new Reservation(a, l, e, ld, date);
+                resaService.saveReservation(r);
+                return "redirect:/livre/listeLivre";
+            } else {
+                redirectAttributes.addFlashAttribute("message", "Quota reservation atteint.");
+                return "redirect:/reservation/formReserve?idAdherent=" + adh + "&idLivre=" + livre;
+            }
+        } else {
+            redirectAttributes.addFlashAttribute("message", "Vous n'etes pas abonne.");
             return "redirect:/reservation/formReserve?idAdherent=" + adh + "&idLivre=" + livre;
         }
-        Reservation r = new Reservation(a, l, e, ld, date);
-        resaService.saveReservation(r);
-        return "redirect:/livre/listeLivre";
     }
     
 }
