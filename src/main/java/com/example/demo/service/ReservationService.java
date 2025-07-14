@@ -14,4 +14,8 @@ public class ReservationService {
     public void saveReservation(Reservation resa) {
         resaRepository.save(resa);
     }
+
+    public int countResaAdherent(int idAdh) {
+        return resaRepository.countReservationsEnAttente(idAdh);
+    }
 }

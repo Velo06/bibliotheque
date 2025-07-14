@@ -46,4 +46,8 @@ public class AdherentService {
     public Long getNomById(String name) {
         return adherentRepository.getIdAdherentByNom(name);
     }
+
+    public int getQuotaReservation(int idAdherent) {
+        return adherentRepository.getQuotaReservation(idAdherent);
+    }
 }
