@@ -14,7 +14,7 @@
 <body>
 <div class="container mt-5">
     <h2>Liste des livres</h2>
-    <a href="">Pret en cours</a>
+    <a href="/pret/enCours?idAdherent=<%= currentUserId %>">Pret en cours</a>
     <table class="table" border="1">
         <thead>
         <tr>

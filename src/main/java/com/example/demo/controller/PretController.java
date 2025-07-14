@@ -81,7 +81,7 @@ public class PretController {
                         typePret.setId(idType);
                         int dureePret = adherent.getTypeAdherent().getDureePret();
                         LocalDate dateRetourPrevu = date.plusDays(dureePret);
-                        Pret p = new Pret(typePret, adherent, livre, dateRetourPrevu, date);
+                        Pret p = new Pret(typePret, adherent, livre, dateRetourPrevu, date, null);
                         pretService.savePret(p);
                         redirectAttributes.addFlashAttribute("message", "Pret reussi.");
                         return "redirect:/pret/formPreter";
@@ -101,5 +101,12 @@ public class PretController {
             redirectAttributes.addFlashAttribute("message", "Cet adherent n'est pas abonne.");
             return "redirect:/pret/formPreter";
         }
+    }
+
+    @GetMapping("enCours")
+    public String listePretEnCours(@RequestParam("idAdherent") Integer idAdh, Model model) {
+        List<Pret> lp = pretService.pretEnCoursAdherent(idAdh);
+        model.addAttribute("pret-en-cours", lp);
+        return "pret-en-cours";
     }
 }
