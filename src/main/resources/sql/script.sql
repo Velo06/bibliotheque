@@ -66,13 +66,7 @@ CREATE TABLE pret(
     FOREIGN KEY (idLivre) REFERENCES livre(id)
 );
 ALTER TABLE pret ADD dateEmprunt DATE;
-
-CREATE TABLE rendrepret(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    idPret INT,
-    dateRetourReel DATE,
-    FOREIGN KEY (idPret) REFERENCES pret(id)
-);
+ALTER TABLE pret ADD dateRetourReel DATE;
 
 CREATE TABLE etat(
     id INT PRIMARY KEY AUTO_INCREMENT,

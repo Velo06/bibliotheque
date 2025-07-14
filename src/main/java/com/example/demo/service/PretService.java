@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.demo.entity.Pret;
 import com.example.demo.repository.PretRepository;
+import java.util.List;
 
 @Service
 public class PretService {
@@ -17,5 +18,9 @@ public class PretService {
 
     public void savePret(Pret p) {
         pretRepository.save(p);
+    }
+
+    public List<Pret> pretEnCoursAdherent(Integer adh) {
+        return pretRepository.findPretsEnCoursByAdherent(adh);
     }
 }

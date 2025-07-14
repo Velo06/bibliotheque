@@ -29,17 +29,21 @@ public class Pret {
     @Column(name = "dateEmprunt", nullable = false)
     private LocalDate dateEmprunt;
 
+    @Column(name = "dateRetourReel")
+    private LocalDate dateRetourReel;
+
     // Constructeurs
     public Pret() {
         // Constructeur par défaut requis par JPA
     }
 
-    public Pret(TypePret typePret, Adherent adherent, Livre livre, LocalDate dateRetourPrevu, LocalDate dateEmprunt) {
+    public Pret(TypePret typePret, Adherent adherent, Livre livre, LocalDate dateRetourPrevu, LocalDate dateEmprunt, LocalDate dateRetourReel) {
         this.typePret = typePret;
         this.adherent = adherent;
         this.livre = livre;
         this.dateRetourPrevu = dateRetourPrevu;
         this.dateEmprunt = dateEmprunt;
+        this.dateRetourReel = dateRetourReel;
     }
 
     // Getters & Setters
@@ -91,6 +95,14 @@ public class Pret {
         this.dateEmprunt = dateEmprunt;
     }
 
+    public LocalDate getDateRetourReel() {
+        return dateRetourReel;
+    }
+
+    public void setDateRetourReel(LocalDate dateRetourReel) {
+        this.dateRetourReel = dateRetourReel;
+    }
+
     // Méthode toString()
     @Override
     public String toString() {
@@ -101,6 +113,7 @@ public class Pret {
                 ", livre=" + (livre != null ? livre.getTitre() : "null") +
                 ", dateRetourPrevu=" + dateRetourPrevu +
                 ", dateEmprunt=" + dateEmprunt +
+                ", dateRetourReel=" + dateRetourReel +
                 '}';
     }
 }
