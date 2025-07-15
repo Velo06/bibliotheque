@@ -52,7 +52,8 @@ public class BibliothecaireController {
         if(check) {
             // Stocker l'utilisateur en session
             session.setAttribute("currentUser", nom);
-            return "redirect:/pret/formPreter";
+            // return "redirect:/pret/formPreter";
+            return "dashboard";
         } else {
             // Ajouter un message d'erreur
             redirectAttributes.addFlashAttribute("error", "Nom ou mot de passe incorrect");
@@ -87,6 +88,22 @@ public class BibliothecaireController {
     public String listeProlong(Model model) {
         List<Prolongement> lp = prolongService.getProlongementEnAttente();
         model.addAttribute("listeProlong", lp);
-        return "liste-prolongement";
+        return "prolong-attente";
+    }
+
+    @GetMapping("acceptProlong")
+    public String acceptProlong(@RequestParam("idProlong") int idProlong) {
+        Etat e = new Etat();
+        e.setId(1);
+        prolongService.accept(idProlong,e);
+        return "redirect:/bibliothecaire/prolongement";
+    }
+
+    @GetMapping("refusProlong")
+    public String refusProlong(@RequestParam("idProlong") int idProlong) {
+        Etat e = new Etat();
+        e.setId(2);
+        prolongService.refus(idProlong,e);
+        return "redirect:/bibliothecaire/prolongement";
     }
 }

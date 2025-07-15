@@ -15,6 +15,7 @@
         .btn { padding: 8px 16px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
         select { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
     </style>
+    <%-- <link rel="stylesheet" href="../css/style.css"> --%>
 </head>
 <body>
     <div class="container">
