@@ -56,5 +56,8 @@ public interface AdherentRepository extends JpaRepository<Adherent, Long> {
 
        // getQuotaProlongement
        @Query("SELECT a.typeAdherent.quotaProlongement FROM Adherent a WHERE a.id = :idAdherent")
-       int getQuotaProlongement(@Param("idAdherent") int idAdherent);
+       int getQuotaProlongement(@Param("idAdherent") Long idAdherent);
+
+       @Query("SELECT a.typeAdherent.dureePenalite FROM Adherent a WHERE a.id = :idAdherent")
+       int getDureePenalite(@Param("idAdherent") int idAdherent);
 }

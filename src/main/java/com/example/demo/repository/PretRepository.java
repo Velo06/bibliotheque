@@ -26,9 +26,9 @@ public interface PretRepository extends JpaRepository<Pret, Long> {
     @Query("SELECT p FROM Pret p WHERE p.adherent.id = :idAdherent AND p.dateRetourReel IS NULL")
     List<Pret> findPretsEnCoursByAdherent(@Param("idAdherent") Integer idAdherent);
 
-    // getRetourPrevu
-    @Query("SELECT p.dateRetourPrevu FROM Pret p WHERE p.id = :id")
-    LocalDate getDateRetourPrevu(@Param("id") int idPret);
+    // // getRetourPrevu
+    // @Query("SELECT p.dateRetourPrevu FROM Pret p WHERE p.id = :id")
+    // LocalDate getDateRetourPrevu(@Param("id") int idPret);
 
     // getAllPretNonRendu
     @Query("SELECT p FROM Pret p WHERE dateRetourReel IS NULL")
