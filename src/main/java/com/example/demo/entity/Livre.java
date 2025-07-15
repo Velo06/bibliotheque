@@ -3,6 +3,9 @@ package com.example.demo.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -24,10 +27,12 @@ public class Livre {
     private String titre;
     
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "idAuteur", nullable = false)
     private Auteur auteur;
     
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "idTheme", nullable = false)
     private Theme theme;
     
@@ -102,6 +107,14 @@ public class Livre {
 
     public void setNbrExemplaire(Integer nbrExemplaire) {
         this.nbrExemplaire = nbrExemplaire;
+    }
+
+    public List<Exemplaire> getExemplaires() {
+        return exemplaires;
+    }
+    
+    public void setExemplaires(List<Exemplaire> exemplaires) {
+        this.exemplaires = exemplaires;
     }
 
     public int getDisponibles() { return disponibles; }

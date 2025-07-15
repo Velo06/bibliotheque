@@ -1,9 +1,12 @@
 com/example/demo/entity/EtatLivre.class
 com/example/demo/controller/AdherentController.class
 com/example/demo/controller/BibliothecaireController.class
-com/example/demo/entity/TypeAdherent.class
 com/example/demo/repository/LivreRepository.class
 com/example/demo/service/BibliothecaireService.class
+com/example/demo/entity/Adherent.class
+com/example/demo/ServletInitializer.class
+com/example/demo/entity/Theme.class
+com/example/demo/entity/TypeAdherent.class
 com/example/demo/service/AdherentService.class
 com/example/demo/entity/Bibliothecaire.class
 com/example/demo/entity/Livre.class
@@ -11,8 +14,5 @@ com/example/demo/repository/BibliothecaireRepository.class
 com/example/demo/DemoApplication.class
 com/example/demo/repository/AdherentRepository.class
 com/example/demo/entity/Exemplaire.class
-com/example/demo/entity/Adherent.class
 com/example/demo/entity/Auteur.class
-com/example/demo/ServletInitializer.class
 com/example/demo/config/LoginFilter.class
-com/example/demo/entity/Theme.class

@@ -4,6 +4,7 @@
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/AdherentController.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/BibliothecaireController.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/LivreController.java
+/home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/LivreRestController.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/PretController.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/ProlongementController.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/ReservationController.java
