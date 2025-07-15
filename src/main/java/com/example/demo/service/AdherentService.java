@@ -50,4 +50,8 @@ public class AdherentService {
     public int getQuotaReservation(int idAdherent) {
         return adherentRepository.getQuotaReservation(idAdherent);
     }
+
+    public int getAgeAdherent(Long id) {
+        return adherentRepository.getAgeAdherent(id);
+    }
 }

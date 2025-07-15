@@ -21,4 +21,8 @@ public class LivreService {
     public Optional<Livre> getById(Long id) {
         return livreRepository.findById(id);
     }
+
+    public int getAgeRestriction(Long idLivre) {
+        return livreRepository.getAgeRestrictionLivre(idLivre);
+    }
 }
