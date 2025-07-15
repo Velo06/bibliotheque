@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -115,5 +116,29 @@ public class PretController {
         List<Pret> lp = pretService.pretEnCoursAdherent(idAdh);
         model.addAttribute("pret-en-cours", lp);
         return "pret-en-cours";
+    }
+
+    @GetMapping("rendrePret")
+    public String formRendre(Model model) {
+        List<Pret> nonRendu = pretService.getAllPretNonRendu();
+        model.addAttribute("listeNonRendu", nonRendu);
+        return "rendre-pret";
+    }
+
+    @GetMapping("formSaveRendre")
+    public String formRendrePret(@RequestParam("idPret") Long idPret, Model model) {
+        model.addAttribute("idPret", idPret);
+        return "form-rendre";
+    }
+
+    @PostMapping("saveRendrePret")
+    public String saveRendrePret(@RequestParam("dateRetourReel") LocalDate dateReel, @RequestParam("pret") int idPret) {
+        Long pret = (long) idPret;
+        LocalDate datePrevu = pretService.getDateRetourPrevu(idPret);
+        pretService.rendreLivre(idPret, dateReel);
+        // if(datePrevu.isBefore(dateReel)) {
+
+        // }
+        return "redirect:/pret/rendrePret";
     }
 }

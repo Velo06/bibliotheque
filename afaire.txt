@@ -1,7 +1,9 @@
-login adherent -> liste livre -> reservation
+login adherent -> liste livre -> reservation x
 		-> pret en cours -> prolongement
 bibliothecaire -> liste reservation accepte/refuse
 		-> liste prolongement accepte/refuse
 
-reservation: adherent abonne, quota reservation atteint
 prolongement: 2 jours avant dateRetourPrevu minimum, adherent non penalise, adherent abonne, pret existant, quota prolongement atteint
+rendre pret: date retour reel > date retour retour prevu -> penalisation
+
+idlivre -> liste exemplaire, disponibilite exemplaire

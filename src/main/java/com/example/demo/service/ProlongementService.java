@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class ProlongementService {
     
-    @Autowired
-    private ProlongementRepository prolongRepository;
+    // @Autowired
+    // private ProlongementRepository prolongRepository;
 
 }
