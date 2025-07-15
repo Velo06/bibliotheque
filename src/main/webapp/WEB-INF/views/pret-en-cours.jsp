@@ -30,7 +30,7 @@
             <td><%= prets.getLivre().getTitre() %></td>
             <td><%= prets.getDateRetourPrevu() %></td>
             <td>
-                <a href="/prolongement/xxx?idPret=<%= prets.getId() %>&idAdherent=<%= prets.getAdherent() %>">Prolonger</a>
+                <a href="/prolongement/xxx?idPret=<%= prets.getId() %>&idAdherent=<%= prets.getAdherent().getId() %>">Prolonger</a>
             </td>
         </tr>
         <%

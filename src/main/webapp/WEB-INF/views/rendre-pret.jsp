@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Livres</title>
+    <%-- <link rel="stylesheet" href="../css/style.css"> --%>
 </head>
 <body>
 <div class="container mt-5">
