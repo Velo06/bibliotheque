@@ -12,7 +12,7 @@ com/example/demo/DemoApplication.class
 com/example/demo/repository/AdherentRepository.class
 com/example/demo/entity/Exemplaire.class
 com/example/demo/entity/Adherent.class
-com/example/demo/ServletInitializer.class
 com/example/demo/entity/Auteur.class
+com/example/demo/ServletInitializer.class
 com/example/demo/config/LoginFilter.class
 com/example/demo/entity/Theme.class

@@ -25,7 +25,7 @@ public class ProlongementController {
         this.adherentService = adherentService;
     }
 
-    @Getmapping("prolonger")
+    @GetMapping("prolonger")
     public String prolonger(@RequestParam("idPret") Long pret, @RequestParam("idAdherent") Long adherent) {
         boolean abonne = adherentService.estAbonne(adherent);
         boolean nonPenalise = adherentService.nonSanctionne(adherent);
@@ -34,5 +34,6 @@ public class ProlongementController {
                 // mbola tsisy formulaire de prolongement
             }
         }
+        return null;
     }
 }

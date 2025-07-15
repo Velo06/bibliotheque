@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entity.Adherent;
 import com.example.demo.repository.AdherentRepository;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,4 +52,16 @@ public class AdherentService {
     public int getQuotaReservation(int idAdherent) {
         return adherentRepository.getQuotaReservation(idAdherent);
     }
+
+    public int getAgeAdherent(Long id) {
+        LocalDate dateNaissance = adherentRepository.getAgeAdherent(id);
+        if (dateNaissance == null) {
+            throw new RuntimeException("Date de naissance introuvable pour l'adhérent avec l'id: " + id);
+        }
+        return Period.between(dateNaissance, LocalDate.now()).getYears();
+    }
+
+    public int getQuotaProlongement(int idAdherent) {
+        return adherentRepository.getQuotaReservation(idAdherent);
+    }    
 }

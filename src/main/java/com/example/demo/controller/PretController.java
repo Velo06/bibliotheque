@@ -72,19 +72,26 @@ public class PretController {
                     // exemplaire disponible
                     int exDispo = exemplaireService.exemplaireDispo(idLivre);
                     if(exDispo != 0) {
-                        // Récupération des entités nécessaires
-                        Optional<Adherent> optionalAdherent = adherentService.getById(idAdherent);
-                        Adherent adherent = optionalAdherent.get();
-                        Optional<Livre> optionalLivre = livreService.getById(idLivre);
-                        Livre livre = optionalLivre.get();
-                        TypePret typePret = new TypePret();
-                        typePret.setId(idType);
-                        int dureePret = adherent.getTypeAdherent().getDureePret();
-                        LocalDate dateRetourPrevu = date.plusDays(dureePret);
-                        Pret p = new Pret(typePret, adherent, livre, dateRetourPrevu, date, null);
-                        pretService.savePret(p);
-                        redirectAttributes.addFlashAttribute("message", "Pret reussi.");
-                        return "redirect:/pret/formPreter";
+                        int age = adherentService.getAgeAdherent(idAdherent);
+                        int restrict = livreService.getAgeRestriction(idLivre);
+                        if(age > restrict) {
+                            // Récupération des entités nécessaires
+                            Optional<Adherent> optionalAdherent = adherentService.getById(idAdherent);
+                            Adherent adherent = optionalAdherent.get();
+                            Optional<Livre> optionalLivre = livreService.getById(idLivre);
+                            Livre livre = optionalLivre.get();
+                            TypePret typePret = new TypePret();
+                            typePret.setId(idType);
+                            int dureePret = adherent.getTypeAdherent().getDureePret();
+                            LocalDate dateRetourPrevu = date.plusDays(dureePret);
+                            Pret p = new Pret(typePret, adherent, livre, dateRetourPrevu, date, null);
+                            pretService.savePret(p);
+                            redirectAttributes.addFlashAttribute("message", "Pret reussi.");
+                            return "redirect:/pret/formPreter";
+                        } else {
+                            redirectAttributes.addFlashAttribute("message", "Cet adherent n'a pas le droit de preter ce livre.");
+                            return "redirect:/pret/formPreter";
+                        }
                     } else {
                         redirectAttributes.addFlashAttribute("message", "Aucun exemplaire disponible.");
                         return "redirect:/pret/formPreter";

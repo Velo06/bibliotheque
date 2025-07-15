@@ -3,6 +3,7 @@ package com.example.demo.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import java.time.LocalDate;
 
 import com.example.demo.entity.Adherent;
 
@@ -47,4 +48,12 @@ public interface AdherentRepository extends JpaRepository<Adherent, Long> {
 
        @Query("SELECT a.typeAdherent.quotaReservation FROM Adherent a WHERE a.id = :idAdherent")
        int getQuotaReservation(@Param("idAdherent") int idAdherent);
+
+       // getAgeAdherent
+       @Query("SELECT a.dateNaissance FROM Adherent a WHERE a.id = :id")
+       LocalDate getAgeAdherent(@Param("id") Long idAdh);
+
+       // getQuotaProlongement
+       @Query("SELECT a.typeAdherent.quotaProlongement FROM Adherent a WHERE a.id = :idAdherent")
+       int getQuotaProlongement(@Param("idAdherent") int idAdherent);
 }

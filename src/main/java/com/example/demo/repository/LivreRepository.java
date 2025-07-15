@@ -22,18 +22,8 @@ public interface LivreRepository extends JpaRepository<Livre, Long> {
     @Query("SELECT l FROM Livre l JOIN FETCH l.theme JOIN FETCH l.auteur WHERE l.id = :id")
     Optional<Livre> findByIdWithThemeAndAuteur(@Param("id") Long id);
 
-    // @Query("SELECT NEW com.example.demo.entity.Livre("
-    //     + "l.id, l.titre, a.nom, t.theme, l.age, l.nbrExemplaire, "
-    //     + "SUM(CASE WHEN e.etat.etat = 'disponible' THEN 1 ELSE 0 END), "
-    //     + "SUM(CASE WHEN e.etat.etat = 'reserve' THEN 1 ELSE 0 END), "
-    //     + "SUM(CASE WHEN e.etat.etat = 'en pret' THEN 1 ELSE 0 END)) "
-    //     + "FROM Livre l "
-    //     + "JOIN l.auteur a "
-    //     + "JOIN l.theme t "
-    //     + "LEFT JOIN l.exemplaires e " 
-    //     + "GROUP BY l.id")
-    // List<Livre> findAllLivresWithEtat();
+    // getAgeResttriction
+    @Query("SELECT l.ageRestriction FROM Livre l WHERE l.id = :id")
+    int getAgeRestrictionLivre(@Param("id") Long idLivre);
 
-    // checkDispo
-    // livre, exemplaire, etat ????
 }
