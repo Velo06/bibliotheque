@@ -95,7 +95,10 @@ CREATE TABLE prolongement(
     id INT PRIMARY KEY AUTO_INCREMENT,
     idPret INT,
     dateFin DATE,   -- dateRetourPrevu + nbr de jour prolongement
-    FOREIGN KEY (idPret) REFERENCES pret(id)
+    idEtat INT,
+    dateDemande DATE,
+    FOREIGN KEY (idPret) REFERENCES pret(id),
+    FOREIGN KEY (idEtat) REFERENCES etat(id)
 );
 
 CREATE TABLE abonnement(    -- ?? --

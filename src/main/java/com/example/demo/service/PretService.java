@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entity.Pret;
 import com.example.demo.repository.PretRepository;
 import java.util.List;
+import java.time.LocalDate;
 
 @Service
 public class PretService {
@@ -22,5 +23,9 @@ public class PretService {
 
     public List<Pret> pretEnCoursAdherent(Integer adh) {
         return pretRepository.findPretsEnCoursByAdherent(adh);
+    }
+
+    public LocalDate getDateRetourPrevu(Long idPret) {
+        return pretRepository.getDateRetourPrevu(idPret);
     }
 }

@@ -25,8 +25,15 @@ public class ProlongementController {
         this.adherentService = adherentService;
     }
 
+    @GetMapping("formProlong")
+    public String formProlong(@RequestParam("idPret") Long pret, @RequestParam("idAdherent") Long adherent, Model model) {
+        model.addAttribute("pret", pret);
+        model.addAttribute("adherent", adherent);
+        return "form-prolonger";
+    }
+
     @GetMapping("prolonger")
-    public String prolonger(@RequestParam("idPret") Long pret, @RequestParam("idAdherent") Long adherent) {
+    public String prolonger(@RequestParam("pret") Long pret, @RequestParam("adh") Long adherent) {
         boolean abonne = adherentService.estAbonne(adherent);
         boolean nonPenalise = adherentService.nonSanctionne(adherent);
         if(abonne == true) {
