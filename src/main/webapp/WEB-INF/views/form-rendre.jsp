@@ -1,6 +1,7 @@
 <%@ page import="com.example.demo.entity.Pret" %>
 <%
     Long pret = (Long) request.getAttribute("idPret");
+    Long adh = (Long) request.getAttribute("idAdherent");
 %>
 
 <!DOCTYPE html>
@@ -22,6 +23,7 @@
             <div class="card-body">
                 <form action="/pret/saveRendrePret" method="post">
                     <input type="hidden" value="<%= pret %>" name="pret">
+                    <input type="hidden" value="<%= adh %>" name="adh">
 
                     <div class="mb-3">
                         <label>Date de retour :</label>

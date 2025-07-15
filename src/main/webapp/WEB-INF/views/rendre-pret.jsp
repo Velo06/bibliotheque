@@ -36,7 +36,7 @@
             <td><%= pret.getDateRetourPrevu() %></td>
             <td><%= pret.getDateEmprunt() %></td>
             <td>
-                <a href="/pret/formSaveRendre?idPret=<%= pret.getId() %>">Rendre</a>
+                <a href="/pret/formSaveRendre?idPret=<%= pret.getId() %>&idAdherent=<%= pret.getAdherent().getId() %>">Rendre</a>
             </td>
         </tr>
         <%
