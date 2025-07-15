@@ -2,8 +2,15 @@
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/ServletInitializer.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/config/LoginFilter.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/AdherentController.java
+<<<<<<< HEAD
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/BibliothecaireController.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/LivreController.java
+=======
+/home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/AdherentRestController.java
+/home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/BibliothecaireController.java
+/home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/LivreController.java
+/home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/LivreRestController.java
+>>>>>>> main
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/PretController.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/ProlongementController.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/controller/ReservationController.java
@@ -27,6 +34,10 @@
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/BibliothecaireRepository.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/ExemplaireRepository.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/LivreRepository.java
+<<<<<<< HEAD
+=======
+/home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/PenalisationRepository.java
+>>>>>>> main
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/PretRepository.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/ProlongementRepository.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/ReservationRepository.java
@@ -36,6 +47,10 @@
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/BibliothecaireService.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/ExemplaireService.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/LivreService.java
+<<<<<<< HEAD
+=======
+/home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/PenalisationService.java
+>>>>>>> main
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/PretService.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/ProlongementService.java
 /home/beriaka/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/ReservationService.java

@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -11,11 +12,13 @@ import com.example.demo.service.TypePretService;
 import com.example.demo.service.AdherentService;
 import com.example.demo.service.LivreService;
 import com.example.demo.service.ExemplaireService;
+import com.example.demo.service.PenalisationService;
 import com.example.demo.entity.Pret;
 import com.example.demo.entity.TypePret;
 import com.example.demo.entity.Adherent;
 import com.example.demo.entity.Livre;
 import com.example.demo.entity.Exemplaire;
+import com.example.demo.entity.Penalisation;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,6 +33,7 @@ public class PretController {
     private AdherentService adherentService;
     private LivreService livreService;
     private ExemplaireService exemplaireService;
+    private PenalisationService penaliteService;
 
     @Autowired
     public PretController(
@@ -37,13 +41,15 @@ public class PretController {
         TypePretService typePretService,
         AdherentService adherentService,
         LivreService livreService,
-        ExemplaireService exemplaireService
+        ExemplaireService exemplaireService,
+        PenalisationService penaliteService
     ) {
         this.pretService = pretService;  
         this.typePretService = typePretService;       
         this.adherentService = adherentService;  
         this.livreService = livreService;  
         this.exemplaireService = exemplaireService;  
+        this.penaliteService = penaliteService;  
     }
 
     @GetMapping("/formPreter")
@@ -58,12 +64,13 @@ public class PretController {
     }
 
     @PostMapping("/preter")
-    public String preter(RedirectAttributes redirectAttributes, @RequestParam("adherentId") Long idAdherent, @RequestParam("livreId") Long idLivre, @RequestParam("typePretId") int idType, @RequestParam("dateEmprunt") LocalDate date) {
+    public String preter(RedirectAttributes redirectAttributes, @RequestParam("adherentId") Long idAdherent, @RequestParam("livreId") Long idLivre, @RequestParam("typePretId") int idType, @RequestParam("dateEmprunt") LocalDate date, @RequestParam("datePrevu") LocalDate prevu) {
         // adherent abonne 
         boolean abonne = adherentService.estAbonne(idAdherent);
         if(abonne == true) {
             // adherent non penalise 
-            boolean nonPenalise = adherentService.nonSanctionne(idAdherent);
+            LocalDate ajd = LocalDate.now();
+            boolean nonPenalise = adherentService.nonSanctionne(idAdherent, ajd);
             if(nonPenalise == true) {
                 // quota livre atteint
                 int quota = adherentService.getQuotaLivre(idAdherent);
@@ -83,8 +90,8 @@ public class PretController {
                             TypePret typePret = new TypePret();
                             typePret.setId(idType);
                             int dureePret = adherent.getTypeAdherent().getDureePret();
-                            LocalDate dateRetourPrevu = date.plusDays(dureePret);
-                            Pret p = new Pret(typePret, adherent, livre, dateRetourPrevu, date, null);
+                            // LocalDate dateRetourPrevu = date.plusDays(dureePret);
+                            Pret p = new Pret(typePret, adherent, livre, prevu, date, null);
                             pretService.savePret(p);
                             redirectAttributes.addFlashAttribute("message", "Pret reussi.");
                             return "redirect:/pret/formPreter";
@@ -115,5 +122,35 @@ public class PretController {
         List<Pret> lp = pretService.pretEnCoursAdherent(idAdh);
         model.addAttribute("pret-en-cours", lp);
         return "pret-en-cours";
+    }
+
+    @GetMapping("rendrePret")
+    public String formRendre(Model model) {
+        List<Pret> nonRendu = pretService.getAllPretNonRendu();
+        model.addAttribute("listeNonRendu", nonRendu);
+        return "rendre-pret";
+    }
+
+    @GetMapping("formSaveRendre")
+    public String formRendrePret(@RequestParam("idPret") Long idPret, @RequestParam("idAdherent") Long idAdh, Model model) {
+        model.addAttribute("idPret", idPret);
+        model.addAttribute("idAdherent", idAdh);
+        return "form-rendre";
+    }
+
+    @PostMapping("saveRendrePret")
+    public String saveRendrePret(@RequestParam("dateRetourReel") LocalDate dateReel, @RequestParam("pret") int idPret, @RequestParam("adh") int idAdherent) {
+        Long pret = (long) idPret;
+        LocalDate datePrevu = pretService.getDateRetourPrevu(idPret);
+        pretService.rendreLivre(idPret, dateReel);
+        if(datePrevu.isBefore(dateReel)) {
+            int duree = adherentService.getDureePenalite(idAdherent);
+            LocalDate dateFin = dateReel.plusDays(duree);
+            Adherent a = new Adherent();
+            a.setId(idAdherent);
+            Penalisation p = new Penalisation(a, dateReel, dateFin);
+            penaliteService.savePenalite(p);
+        }
+        return "redirect:/pret/rendrePret";
     }
 }

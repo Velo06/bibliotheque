@@ -90,6 +90,8 @@ CREATE TABLE penalisation(
     idAdherent INT,
     FOREIGN KEY (idAdherent) REFERENCES adherent(id)
 );
+ALTER TABLE penalisation ADD dateDebut DATE;
+ALTER TABLE penalisation ADD dateFin DATE;
 
 CREATE TABLE prolongement(
     id INT PRIMARY KEY AUTO_INCREMENT,

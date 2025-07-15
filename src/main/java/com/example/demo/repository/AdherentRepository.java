@@ -26,10 +26,11 @@ public interface AdherentRepository extends JpaRepository<Adherent, Long> {
     boolean checkLogin(@Param("nom") String nom, @Param("mdp") String mdp);
 
     // checkSanction(id)
-    @Query("SELECT CASE WHEN COUNT(p) = 0 THEN true ELSE false END " +
-           "FROM Penalisation p " +
-           "WHERE p.adherent.id = :adherentId")
-    boolean isAdherentNotSanctionne(@Param("adherentId") Long adherentId);
+       @Query("SELECT CASE WHEN COUNT(p) = 0 THEN true ELSE false END FROM Penalisation p WHERE p.adherent.id = :adherentId AND :today BETWEEN p.dateDebut AND p.dateFin")
+       boolean isAdherentNotSanctionne(
+       @Param("adherentId") Long adherentId,
+       @Param("today") LocalDate today
+       );
 
     // checkAbonne()
     @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END " +
@@ -55,5 +56,5 @@ public interface AdherentRepository extends JpaRepository<Adherent, Long> {
 
        // getQuotaProlongement
        @Query("SELECT a.typeAdherent.quotaProlongement FROM Adherent a WHERE a.id = :idAdherent")
-       int getQuotaProlongement(@Param("idAdherent") Long idAdherent);
+       int getQuotaProlongement(@Param("idAdherent") int idAdherent);
 }

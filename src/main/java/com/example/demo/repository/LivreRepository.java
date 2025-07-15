@@ -26,4 +26,6 @@ public interface LivreRepository extends JpaRepository<Livre, Long> {
     @Query("SELECT l.ageRestriction FROM Livre l WHERE l.id = :id")
     int getAgeRestrictionLivre(@Param("id") Long idLivre);
 
+    @Query("SELECT l FROM Livre l LEFT JOIN FETCH l.exemplaires e LEFT JOIN FETCH e.etat WHERE l.id = :id")
+    Optional<Livre> findLivreWithExemplaires(@Param("id") Integer id);
 }
