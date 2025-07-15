@@ -1,5 +1,8 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,10 +14,12 @@ public class Exemplaire {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "idEtat", nullable = false) // Correction: "idEtat" au lieu de "id_etat"
     private EtatLivre etat;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference
     @JoinColumn(name = "idLivre", nullable = false) // Correction: "idLivre" au lieu de "id_livre"
     private Livre livre;
 

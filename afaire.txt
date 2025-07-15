@@ -4,8 +4,4 @@ bibliothecaire -> liste reservation accepte/refuse
 		-> liste prolongement accepte/refuse
 
 prolongement: 2 jours avant dateRetourPrevu minimum, adherent non penalise, adherent abonne, pret existant, quota prolongement atteint
-rendre pret: date retour reel > date retour retour prevu -> penalisation
-penalisation: idAdherent, dateDebut, dateFin
-	dateDebut = dateRetourReel
-	dateFin = dateDebut + dureePenalite
 alea 3: idlivre -> liste exemplaire, disponibilite exemplaire
