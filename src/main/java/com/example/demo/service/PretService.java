@@ -25,7 +25,7 @@ public class PretService {
         return pretRepository.findPretsEnCoursByAdherent(adh);
     }
 
-    public LocalDate getDateRetourPrevu(Long idPret) {
+    public LocalDate getDateRetourPrevu(int idPret) {
         return pretRepository.getDateRetourPrevu(idPret);
     }
 }

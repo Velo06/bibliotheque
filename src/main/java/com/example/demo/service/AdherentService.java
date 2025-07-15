@@ -61,7 +61,7 @@ public class AdherentService {
         return Period.between(dateNaissance, LocalDate.now()).getYears();
     }
 
-    public int getQuotaProlongement(int idAdherent) {
-        return adherentRepository.getQuotaReservation(idAdherent);
+    public int getQuotaProlongement(Long idAdherent) {
+        return adherentRepository.getQuotaProlongement(idAdherent);
     }    
 }

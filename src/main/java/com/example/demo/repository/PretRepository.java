@@ -26,6 +26,6 @@ public interface PretRepository extends JpaRepository<Pret, Long> {
 
     // getRetourPrevu
     @Query("SELECT p.dateRetourPrevu FROM Pret p WHERE p.id = :id")
-    LocalDate getDateRetourPrevu(@Param("id") Long idPret);
+    LocalDate getDateRetourPrevu(@Param("id") int idPret);
 
 }

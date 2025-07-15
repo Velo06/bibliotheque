@@ -6,9 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.service.ProlongementService;
+import com.example.demo.service.PretService;
 import com.example.demo.entity.Prolongement;
 import com.example.demo.service.AdherentService;
 import com.example.demo.entity.Adherent;
+import com.example.demo.entity.Etat;
+import com.example.demo.entity.Pret;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
@@ -18,11 +23,13 @@ import jakarta.servlet.http.HttpSession;
 public class ProlongementController {
     private ProlongementService prolongService;
     private AdherentService adherentService;
+    private PretService pretService;
 
     @Autowired
-    public ProlongementController(ProlongementService prolongService, AdherentService adherentService) {
+    public ProlongementController(ProlongementService prolongService, AdherentService adherentService, PretService pretService) {
         this.prolongService = prolongService;
         this.adherentService = adherentService;
+        this.pretService = pretService;
     }
 
     @GetMapping("formProlong")
@@ -33,12 +40,25 @@ public class ProlongementController {
     }
 
     @GetMapping("prolonger")
-    public String prolonger(@RequestParam("pret") Long pret, @RequestParam("adh") Long adherent) {
+    public String prolonger(@RequestParam("pret") int pret, @RequestParam("adh") Long adherent, @RequestParam("dateDm") LocalDate dmd, @RequestParam("dateFin") LocalDate fin) {
         boolean abonne = adherentService.estAbonne(adherent);
         boolean nonPenalise = adherentService.nonSanctionne(adherent);
         if(abonne == true) {
             if(nonPenalise == true) {
-                // mbola tsisy formulaire de prolongement
+                LocalDate datePrevu = pretService.getDateRetourPrevu(pret);
+                Period diff = Period.between(datePrevu, dmd);
+                if(diff.getDays() >= 2) {
+                    int quota = adherentService.getQuotaProlongement(adherent);
+                    int count = prolongService.countProlongementsByAdherent(adherent);
+                    if(count < quota) {
+                        Pret p = new Pret();
+                        p.setId(pret);
+                        Etat e = new Etat();
+                        e.setId(3);
+                        Prolongement pg = new Prolongement(p, fin, dmd, e);
+                        prolongService.saveProlongement(pg);
+                    }
+                }
             }
         }
         return null;
