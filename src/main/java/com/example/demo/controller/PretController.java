@@ -64,7 +64,7 @@ public class PretController {
     }
 
     @PostMapping("/preter")
-    public String preter(RedirectAttributes redirectAttributes, @RequestParam("adherentId") Long idAdherent, @RequestParam("livreId") Long idLivre, @RequestParam("typePretId") int idType, @RequestParam("dateEmprunt") LocalDate date) {
+    public String preter(RedirectAttributes redirectAttributes, @RequestParam("adherentId") Long idAdherent, @RequestParam("livreId") Long idLivre, @RequestParam("typePretId") int idType, @RequestParam("dateEmprunt") LocalDate date, @RequestParam("datePrevu") LocalDate prevu) {
         // adherent abonne 
         boolean abonne = adherentService.estAbonne(idAdherent);
         if(abonne == true) {
@@ -90,8 +90,8 @@ public class PretController {
                             TypePret typePret = new TypePret();
                             typePret.setId(idType);
                             int dureePret = adherent.getTypeAdherent().getDureePret();
-                            LocalDate dateRetourPrevu = date.plusDays(dureePret);
-                            Pret p = new Pret(typePret, adherent, livre, dateRetourPrevu, date, null);
+                            // LocalDate dateRetourPrevu = date.plusDays(dureePret);
+                            Pret p = new Pret(typePret, adherent, livre, prevu, date, null);
                             pretService.savePret(p);
                             redirectAttributes.addFlashAttribute("message", "Pret reussi.");
                             return "redirect:/pret/formPreter";

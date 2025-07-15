@@ -79,6 +79,11 @@
                         <input type="date" name="dateEmprunt">
                     </div>
 
+                    <div class="mb-3">
+                        <label>Date de retour prevu :</label>
+                        <input type="date" name="datePrevu">
+                    </div>
+
                     <div>
                         <button type="submit" class="btn">
                             Preter
