@@ -13,4 +13,7 @@ public interface ProlongementRepository extends JpaRepository<Prolongement, Long
     // save(Prolongement)
     // delete(id)
     
+    @Query("SELECT p FROM Prolongement p WHERE p.etat.id = 3")
+    List<Prolongement> getProlongementEnAttente();
+
 }

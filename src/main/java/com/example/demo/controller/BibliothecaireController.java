@@ -13,6 +13,8 @@ import com.example.demo.entity.Bibliothecaire;
 import com.example.demo.entity.Etat;
 import com.example.demo.service.ReservationService;
 import com.example.demo.entity.Reservation;
+import com.example.demo.service.ProlongementService;
+import com.example.demo.entity.Prolongement;
 
 @Controller
 @RequestMapping("/bibliothecaire")
@@ -20,14 +22,17 @@ public class BibliothecaireController {
     @Autowired
     private BibliothecaireService biblioService;
     private ReservationService resaService;
+    private ProlongementService prolongService;
 
     @Autowired
     public BibliothecaireController(
         BibliothecaireService biblioService,      
-        ReservationService resaService      
+        ReservationService resaService,  
+        ProlongementService prolongService  
     ) {
         this.biblioService = biblioService;       
         this.resaService = resaService;       
+        this.prolongService = prolongService;       
     }
 
     @GetMapping("/login")
@@ -76,5 +81,12 @@ public class BibliothecaireController {
         e.setId(2);
         resaService.refus(idResa,e);
         return "redirect:/bibliothecaire/validerResa";
+    }
+
+    @GetMapping("prolongement")
+    public String listeProlong(Model model) {
+        List<Prolongement> lp = prolongService.getProlongementEnAttente();
+        model.addAttribute("listeProlong", lp);
+        return "liste-prolongement";
     }
 }
