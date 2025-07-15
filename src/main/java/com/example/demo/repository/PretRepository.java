@@ -36,4 +36,7 @@ public interface PretRepository extends JpaRepository<Pret, Long> {
     @Query("UPDATE Pret p SET p.dateRetourReel = :reel WHERE p.id = :id")
     void saveRendu(@Param("reel") LocalDate date, @Param("id") int idPret);
 
+    @Query("SELECT COUNT(p) FROM Pret p WHERE p.adherent.id = :id AND p.dateRetourReel IS NULL AND p.typePret.type = 'a la maison'")
+    int countByAdherentIdAndTypePretMaisonAndNonRendu(@Param("id") Long id);
+
 }
