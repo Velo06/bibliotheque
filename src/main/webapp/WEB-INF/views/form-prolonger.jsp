@@ -25,7 +25,7 @@
                 <form action="/prolongement/prolonger" method="post">
                    <c:if test="${not empty error}">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            ${message}
+                            ${error}
                         </div>
                     </c:if>
                     <input type="hidden" value="<%= adherent %>" name="adh">
