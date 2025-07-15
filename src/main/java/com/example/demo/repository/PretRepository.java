@@ -1,9 +1,12 @@
 package com.example.demo.repository;
 
+import org.springframework.cglib.core.Local;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.time.LocalDate;
 
@@ -22,6 +25,10 @@ public interface PretRepository extends JpaRepository<Pret, Long> {
     // pretEnCoursAdherent
     @Query("SELECT p FROM Pret p WHERE p.adherent.id = :idAdherent AND p.dateRetourReel IS NULL")
     List<Pret> findPretsEnCoursByAdherent(@Param("idAdherent") Integer idAdherent);
+
+    // getRetourPrevu
+    @Query("SELECT p.dateRetourPrevu FROM Pret p WHERE p.id = :id")
+    LocalDate getDateRetourPrevu(@Param("id") int idPret);
 
     // getAllPretNonRendu
     @Query("SELECT p FROM Pret p WHERE dateRetourReel IS NULL")

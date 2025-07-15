@@ -16,6 +16,10 @@ public interface ProlongementRepository extends JpaRepository<Prolongement, Long
     // findById(id)
     // save(Prolongement)
     // delete(id)
+
+    @Query("SELECT COUNT(p) FROM Prolongement p WHERE p.pret.adherent.id = :idAdherent")
+    int countProlongementsByAdherent(@Param("idAdherent") Long idAdherent);
+   
     
     @Query("SELECT p FROM Prolongement p WHERE p.etat.id = 3")
     List<Prolongement> getProlongementEnAttente();

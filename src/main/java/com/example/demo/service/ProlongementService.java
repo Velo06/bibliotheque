@@ -14,6 +14,13 @@ public class ProlongementService {
     @Autowired
     private ProlongementRepository prolongRepository;
 
+    public int countProlongementsByAdherent(Long idAdherent) {
+        return prolongRepository.countProlongementsByAdherent(idAdherent);
+    }
+
+    public void saveProlongement(Prolongement pg) {
+        prolongRepository.save(pg);
+    }
     public List<Prolongement> getProlongementEnAttente() {
         return prolongRepository.getProlongementEnAttente();
     }

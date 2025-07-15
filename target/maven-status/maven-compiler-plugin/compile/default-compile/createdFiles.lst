@@ -14,5 +14,10 @@ com/example/demo/repository/BibliothecaireRepository.class
 com/example/demo/DemoApplication.class
 com/example/demo/repository/AdherentRepository.class
 com/example/demo/entity/Exemplaire.class
+<<<<<<< HEAD
+com/example/demo/entity/Adherent.class
+com/example/demo/ServletInitializer.class
+=======
+>>>>>>> main
 com/example/demo/entity/Auteur.class
 com/example/demo/config/LoginFilter.class

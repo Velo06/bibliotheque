@@ -11,7 +11,7 @@ public class Prolongement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY) // Remplace OneToOne si un prêt peut être prolongé plusieurs fois
+    @OneToOne(fetch = FetchType.LAZY) // Remplace OneToOne si un prêt peut être prolongé plusieurs fois
     @JoinColumn(name = "idPret", nullable = false)
     private Pret pret;
 
