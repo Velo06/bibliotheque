@@ -33,7 +33,7 @@
             <td><%= p.getDateDemande() %></td>
             <td><%= p.getDateFin() %></td>
             <td>
-                <a href="/bibliothecaire/acceptProlong?idProlong=<%= p.getId() %>">Accepter</a>
+                <a href="/bibliothecaire/acceptProlong?idProlong=<%= p.getId() %>&idAdherent=<%= p.getPret().getAdherent().getId() %>&idLivre=<%= p.getPret().getLivre().getId() %>&dateDemande=<%= p.getDateDemande() %>&dateFin=<%= p.getDateFin() %>">Accepter</a>
                 <a href="/bibliothecaire/refusProlong?idProlong=<%= p.getId() %>">Refuser</a>
             </td>
         </tr>
