@@ -9,6 +9,8 @@ import com.example.demo.service.ProlongementService;
 import com.example.demo.entity.Prolongement;
 import com.example.demo.service.AdherentService;
 import com.example.demo.entity.Adherent;
+
+import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.servlet.http.HttpSession;
@@ -28,7 +30,8 @@ public class ProlongementController {
     @GetMapping("prolonger")
     public String prolonger(@RequestParam("idPret") Long pret, @RequestParam("idAdherent") Long adherent) {
         boolean abonne = adherentService.estAbonne(adherent);
-        boolean nonPenalise = adherentService.nonSanctionne(adherent);
+        LocalDate ajd = LocalDate.now();
+        boolean nonPenalise = adherentService.nonSanctionne(adherent, ajd);
         if(abonne == true) {
             if(nonPenalise == true) {
                 // mbola tsisy formulaire de prolongement

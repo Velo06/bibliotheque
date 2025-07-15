@@ -37,8 +37,8 @@ public class AdherentService {
         return adherentRepository.isAdherentAbonne(idAdh);
     }
 
-    public boolean nonSanctionne(Long idAdh) {
-        return adherentRepository.isAdherentNotSanctionne(idAdh);
+    public boolean nonSanctionne(Long idAdh, LocalDate ajd) {
+        return adherentRepository.isAdherentNotSanctionne(idAdh, ajd);
     }
 
     public int getQuotaLivre(Long idAdh) {
@@ -64,4 +64,8 @@ public class AdherentService {
     public int getQuotaProlongement(int idAdherent) {
         return adherentRepository.getQuotaReservation(idAdherent);
     }    
+
+    public int getDureePenalite(int id) {
+        return adherentRepository.getDureePenalite(id);
+    }
 }

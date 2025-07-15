@@ -27,6 +27,7 @@
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/BibliothecaireRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/ExemplaireRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/LivreRepository.java
+/home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/PenalisationRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/PretRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/ProlongementRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/ReservationRepository.java
@@ -36,6 +37,7 @@
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/BibliothecaireService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/ExemplaireService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/LivreService.java
+/home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/PenalisationService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/PretService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/ProlongementService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/ReservationService.java
