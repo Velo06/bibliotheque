@@ -14,4 +14,6 @@ public interface PenalisationRepository extends JpaRepository<Penalisation, Long
     // save(Penalisation)
     // delete(id)
 
+    @Query("SELECT p FROM Penalisation p WHERE p.adherent.id = :id AND :date BETWEEN p.dateDebut AND p.dateFin")
+    Penalisation findSanctionActive(@Param("id") Long id, @Param("date") LocalDate date);
 }
