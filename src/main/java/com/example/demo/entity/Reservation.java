@@ -85,7 +85,7 @@ public class Reservation {
     }
 
     public LocalDate getDateDemande() {
-        return dateReservation;
+        return dateDemande;
     }
 
     public void setDateDemande(LocalDate date) {

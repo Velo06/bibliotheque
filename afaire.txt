@@ -5,3 +5,5 @@ bibliothecaire -> liste reservation accepte/refuse
 
 prolongement: 2 jours avant dateRetourPrevu minimum, adherent non penalise, adherent abonne, pret existant, quota prolongement atteint
 alea 3: idlivre -> liste exemplaire, disponibilite exemplaire
+
+alea 4: num adherent -> abonne ou non, quota pret a domicile, sanctionne (si oui jusqu'a quand)
