@@ -25,14 +25,18 @@ public class Abonnement {
     @Column(name = "dateFin", nullable = false)
     private LocalDate dateFin;
 
+    @Column(name = "validite", nullable = false)
+    private int validite;
+
     // Constructeurs
     public Abonnement() {}
 
-    public Abonnement(Adherent adherent, BigDecimal montant, LocalDate dateDebut, LocalDate dateFin) {
+    public Abonnement(Adherent adherent, BigDecimal montant, LocalDate dateDebut, LocalDate dateFin, int validite) {
         this.adherent = adherent;
         this.montant = montant;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
+        this.validite = validite;
     }
 
     // Getters & Setters
@@ -74,6 +78,14 @@ public class Abonnement {
 
     public void setDateFin(LocalDate dateFin) {
         this.dateFin = dateFin;
+    }
+
+    public Integer getValidite() {
+        return validite;
+    }
+
+    public void setValidite(Integer etat) {
+        this.validite = etat;
     }
     
     // Méthode utilitaire pour vérifier si l'abonnement est actif

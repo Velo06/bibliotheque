@@ -89,8 +89,10 @@ public class PretController {
                             Livre livre = optionalLivre.get();
                             TypePret typePret = new TypePret();
                             typePret.setId(idType);
-                            int dureePret = adherent.getTypeAdherent().getDureePret();
-                            // LocalDate dateRetourPrevu = date.plusDays(dureePret);
+                            if(prevu == null) {
+                                int dureePret = adherent.getTypeAdherent().getDureePret();
+                                prevu = date.plusDays(dureePret);
+                            }
                             Pret p = new Pret(typePret, adherent, livre, prevu, date, null);
                             pretService.savePret(p);
                             redirectAttributes.addFlashAttribute("message", "Pret reussi.");

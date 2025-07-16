@@ -51,7 +51,8 @@ public class ProlongementController {
                             @RequestParam("dateFin") LocalDate fin,
                             RedirectAttributes redirectAttributes) {
         boolean abonne = adherentService.estAbonne(adherent);
-        boolean nonPenalise = adherentService.nonSanctionne(adherent);
+        LocalDate now = LocalDate.now();
+        boolean nonPenalise = adherentService.nonSanctionne(adherent, now);
         if (abonne) {
             if (nonPenalise) {
                 LocalDate datePrevu = pretService.getDateRetourPrevu(pret);

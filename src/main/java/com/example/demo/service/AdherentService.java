@@ -108,4 +108,8 @@ public class AdherentService {
 
         return response;
     }
+
+    public int getDureePret(int idAdherent) {
+        return adherentRepository.getDureePret(idAdherent);
+    }
 }

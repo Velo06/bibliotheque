@@ -39,6 +39,9 @@ public interface AdherentRepository extends JpaRepository<Adherent, Long> {
            "AND CURRENT_DATE BETWEEN a.dateDebut AND a.dateFin")
     boolean isAdherentAbonne(@Param("adherentId") Long adherentId);
 
+   //  @Query("SELECT CASE WHEN COUNT(a) > 0 THEN true ELSE false END FROM Abonnement a WHERE a.adherent.id = :adherentId AND CURRENT_DATE BETWEEN a.dateDebut AND a.dateFin AND a.validite = 0")
+   //  boolean isAdherentAbonne(@Param("adherentId") Long adherentId);
+
        // getQuotaLivre
        @Query("SELECT t.quotaLivre FROM Adherent a JOIN a.typeAdherent t WHERE a.id = :id")
        int getQuotaLivre(@Param("id") Long idAdherent);
@@ -60,4 +63,7 @@ public interface AdherentRepository extends JpaRepository<Adherent, Long> {
 
        @Query("SELECT a.typeAdherent.dureePenalite FROM Adherent a WHERE a.id = :idAdherent")
        int getDureePenalite(@Param("idAdherent") int idAdherent);
+
+       @Query("SELECT a.typeAdherent.dureePret FROM Adherent a WHERE a.id = :idAdherent")
+       int getDureePret(@Param("idAdherent") int idAdherent);
 }

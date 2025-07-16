@@ -111,6 +111,7 @@ CREATE TABLE abonnement(    -- ?? --
     dateFin DATE,
     FOREIGN KEY (idAdherent) REFERENCES adherent(id)
 );
+ALTER TABLE abonnement ADD validite INT;
 
 CREATE TABLE jourferie(
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -131,4 +132,3 @@ CREATE TABLE exemplaire (
 );
 
 INSERT INTO bibliothecaire(nom,mdp) VALUES('admin','admin');
-INSERT INTO bibliothecaire(nom,mdp) VALUES('velo','velo');
