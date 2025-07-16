@@ -80,8 +80,8 @@ public class PretController {
                     int exDispo = exemplaireService.exemplaireDispo(idLivre);
                     if(exDispo != 0) {
                         int age = adherentService.getAgeAdherent(idAdherent);
-                        int restrict = livreService.getAgeRestriction(idLivre);
-                        if(age > restrict) {
+                        // int restrict = livreService.getAgeRestriction(idLivre);
+                        // if(age > restrict) {
                             // Récupération des entités nécessaires
                             Optional<Adherent> optionalAdherent = adherentService.getById(idAdherent);
                             Adherent adherent = optionalAdherent.get();
@@ -97,10 +97,10 @@ public class PretController {
                             pretService.savePret(p);
                             redirectAttributes.addFlashAttribute("message", "Pret reussi.");
                             return "redirect:/pret/formPreter";
-                        } else {
-                            redirectAttributes.addFlashAttribute("message", "Cet adherent n'a pas le droit de preter ce livre.");
-                            return "redirect:/pret/formPreter";
-                        }
+                        // } else {
+                        //     redirectAttributes.addFlashAttribute("message", "Cet adherent n'a pas le droit de preter ce livre.");
+                        //     return "redirect:/pret/formPreter";
+                        // }
                     } else {
                         redirectAttributes.addFlashAttribute("message", "Aucun exemplaire disponible.");
                         return "redirect:/pret/formPreter";
