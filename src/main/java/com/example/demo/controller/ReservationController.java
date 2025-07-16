@@ -62,7 +62,7 @@ public class ReservationController {
             int ageAdh = adherentService.getAgeAdherent(idAdherent);
             // int restrict = livreService.getAgeRestriction(idLivre);
             // if(ageAdh > restrict) {
-                if(countQuota < quota) {
+                // if(countQuota < quota) {
                     if(date.isBefore(ld) || date.isEqual(ld)) {
                         redirectAttributes.addFlashAttribute("message", "La date a reserver ne doit pas etre la date d'aujourd'hui ou anterieure a celle d'aujourd'hui.");
                         return "redirect:/reservation/formReserve?idAdherent=" + adh + "&idLivre=" + livre;
@@ -70,10 +70,10 @@ public class ReservationController {
                     Reservation r = new Reservation(a, l, e, ld, date);
                     resaService.saveReservation(r);
                     return "redirect:/livre/listeLivre";
-                } else {
-                    redirectAttributes.addFlashAttribute("message", "Quota reservation atteint.");
-                    return "redirect:/reservation/formReserve?idAdherent=" + adh + "&idLivre=" + livre;
-                }
+                // } else {
+                //     redirectAttributes.addFlashAttribute("message", "Quota reservation atteint.");
+                //     return "redirect:/reservation/formReserve?idAdherent=" + adh + "&idLivre=" + livre;
+                // }
             // } else {
             //     redirectAttributes.addFlashAttribute("message", "Vous n'avez pas le droit de reserver ce livre.");
             //     return "redirect:/reservation/formReserve?idAdherent=" + adh + "&idLivre=" + livre;

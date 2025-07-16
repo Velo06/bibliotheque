@@ -17,6 +17,7 @@
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/entity/Etat.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/entity/EtatLivre.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/entity/Exemplaire.java
+/home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/entity/JourFerie.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/entity/Livre.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/entity/Penalisation.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/entity/Pret.java
@@ -28,6 +29,7 @@
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/AdherentRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/BibliothecaireRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/ExemplaireRepository.java
+/home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/JourFerieRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/LivreRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/PenalisationRepository.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/repository/PretRepository.java
@@ -38,6 +40,7 @@
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/AdherentService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/BibliothecaireService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/ExemplaireService.java
+/home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/JourFerieService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/LivreService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/PenalisationService.java
 /home/itu/Documents/GitHub/bibliotheque/src/main/java/com/example/demo/service/PretService.java

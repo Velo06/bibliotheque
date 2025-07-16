@@ -20,7 +20,7 @@ public interface JourFerieRepository extends JpaRepository<JourFerie, Long> {
 
     // countQuotaAdherent
     @Query("SELECT jf FROM JourFerie jf")
-    List<JourFerie> getJourFerie();
+    List<LocalDate> getJourFerie();
 
    
 }

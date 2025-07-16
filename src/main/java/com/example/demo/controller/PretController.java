@@ -13,8 +13,10 @@ import com.example.demo.service.AdherentService;
 import com.example.demo.service.LivreService;
 import com.example.demo.service.ExemplaireService;
 import com.example.demo.service.PenalisationService;
+import com.example.demo.service.JourFerieService;
 import com.example.demo.entity.Pret;
 import com.example.demo.entity.TypePret;
+import com.example.demo.entity.JourFerie;
 import com.example.demo.entity.Adherent;
 import com.example.demo.entity.Livre;
 import com.example.demo.entity.Exemplaire;
@@ -34,6 +36,7 @@ public class PretController {
     private LivreService livreService;
     private ExemplaireService exemplaireService;
     private PenalisationService penaliteService;
+    private JourFerieService jourFerieService;
 
     @Autowired
     public PretController(
@@ -42,7 +45,8 @@ public class PretController {
         AdherentService adherentService,
         LivreService livreService,
         ExemplaireService exemplaireService,
-        PenalisationService penaliteService
+        PenalisationService penaliteService,
+        JourFerieService jourFerieService
     ) {
         this.pretService = pretService;  
         this.typePretService = typePretService;       
@@ -50,6 +54,7 @@ public class PretController {
         this.livreService = livreService;  
         this.exemplaireService = exemplaireService;  
         this.penaliteService = penaliteService;  
+        this.jourFerieService = jourFerieService;  
     }
 
     @GetMapping("/formPreter")
@@ -92,6 +97,10 @@ public class PretController {
                             if(prevu == null) {
                                 int dureePret = adherent.getTypeAdherent().getDureePret();
                                 prevu = date.plusDays(dureePret);
+                            }
+                            List<LocalDate> ljf = jourFerieService.getJourFerie();
+                            while (ljf.contains(prevu)) {
+                                prevu = prevu.plusDays(1); // Décale jusqu'à une date non fériée
                             }
                             Pret p = new Pret(typePret, adherent, livre, prevu, date, null);
                             pretService.savePret(p);
